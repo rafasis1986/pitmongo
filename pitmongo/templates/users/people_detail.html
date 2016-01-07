@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}User: {{ object.username }}{% endblock %}
+
+{% block content %}
+<div class="container">
+
+	<div class="row">
+	  <div class="col-sm-12">
+	
+	    <h2>{{ object.slug }}</h2>
+	    {% if object.name %}
+	      <p>{{ object.name }}</p>
+	      <br>
+	      <p>{{ object.surname }}</p>
+	    {% endif %}
+	  </div>
+	</div>
+	
+	<!-- Action buttons -->
+	<div class="row">
+	  <div class="col-sm-12 ">
+	    <a class="btn btn-primary" href="{% url 'people_update' object.slug %}">Update</a>
+	  </div>	
+	</div>
+
+</div>
+{% endblock content %}
+
