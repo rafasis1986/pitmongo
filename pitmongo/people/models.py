@@ -11,17 +11,17 @@ class People(models.Model):
 
     name = models.CharField(_("Name"), max_length=100)
     surname = models.CharField(_("Surname"), max_length=100)
-    slug = models.SlugField(max_length=30)
+    slug = models.SlugField(unique=True)
 
     class Meta:
         verbose_name = 'person'
         verbose_name_plural = 'people'
-        db_table = 'users_people'
+        db_table = 'people_people'
 
     def save(self, *args, **kwargs):
         self.name = self.name.strip()
         self.surname = self.surname.strip()
-        if self.slug is None:
+        if len(self.slug) == 0:
             self.slug = generateKey()
         super(People, self).save(*args, **kwargs)
 
@@ -34,12 +34,12 @@ class People(models.Model):
 
     @models.permalink
     def get_absolute_url(self):
-        return ('people_detail', [self.slug])
+        return ('people:detail', [self.slug])
 
     @models.permalink
     def get_update_url(self):
-        return ('people_update', [self.slug])
+        return ('people:update', [self.slug])
 
     @models.permalink
     def get_delete_url(self):
-        return ('people_delete', [self.slug])
+        return ('people:delete', [self.slug])

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}User: {{ object.username }}{% endblock %}
+
 
 {% block content %}
 <div class="container">
@@ -9,7 +9,7 @@
 	<div class="row">
 	  <div class="col-sm-12">
 	
-	    <h2>{{ object.slug }}</h2>
+	    <h2>Person</h2>
 	    {% if object.name %}
 	      <p>{{ object.name }}</p>
 	      <br>
@@ -21,7 +21,7 @@
 	<!-- Action buttons -->
 	<div class="row">
 	  <div class="col-sm-12 ">
-	    <a class="btn btn-primary" href="{% url 'people_update' object.slug %}">Update</a>
+	    <a class="btn btn-primary" href="{{ object.get_update_url }}">Update</a>
 	  </div>	
 	</div>
 

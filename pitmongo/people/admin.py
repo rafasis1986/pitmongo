@@ -2,7 +2,7 @@
 
 from django.contrib import admin
 
-from pitmongo.users.models import People
+from pitmongo.people.models import People
 
 
 admin.register(People)

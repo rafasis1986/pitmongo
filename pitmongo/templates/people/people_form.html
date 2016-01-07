@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if object %}
+        <h2>Edit Person</h2>
+        <form method="post" enctype='multipart/form-data' enctype='multipart/form-data' action="{{ object.get_update_url  }}">
+	{% else %}
+        <h2>Add Person</h2>
+        <form method="post" enctype='multipart/form-data' enctype='multipart/form-data' action="{% url 'people:add' %}">
+    {% endif %}
+    	<table class="table table-bordered">
+	        {% csrf_token %}
+	        {{ form.as_p }}
+       </table>
+       <div class="control-group">
+          <div class="controls">
+            <button type="submit" class="btn btn-success ">Save</button>
+            <a href="{% url 'people:list' %}" class="btn btn-warning"> 
+                <i class="glyphicon glyphicon-circle-arrow-left glyphicon glyphicon-white"></i> Cancel 
+			</a>
+          </div>
+        </div>
+    </form>
+{% endblock %}

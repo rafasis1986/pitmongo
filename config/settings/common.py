@@ -12,7 +12,9 @@ from __future__ import absolute_import, unicode_literals
 
 import environ
 
-ROOT_DIR = environ.Path(__file__) - 3  # (/a/b/myfile.py - 3 = /)
+
+ROOT_DIR = environ.Path(__file__) - 3
+
 APPS_DIR = ROOT_DIR.path('pitmongo')
 
 env = environ.Env()
@@ -40,7 +42,7 @@ THIRD_PARTY_APPS = (
 
 # Apps specific for this project go here.
 LOCAL_APPS = (
-    'pitmongo.users',  # custom users app
+    'pitmongo.people',  # custom users app
     # Your stuff: custom apps go here
 )
 
@@ -98,7 +100,7 @@ DATABASES = {
     # Raises ImproperlyConfigured exception if DATABASE_URL not in os.environ
     'default': {
                 'ENGINE': 'django.db.backends.sqlite3',
-                'NAME': 'test.db',
+                'NAME': str(ROOT_DIR.path('db.sqlite3')),
         }
 }
 
@@ -209,3 +211,5 @@ AUTHENTICATION_BACKENDS = (
 
 # Location of root django.contrib.admin URL, use {% url 'admin:index' %}
 ADMIN_URL = r'^admin/'
+
+APP_DIRS = True

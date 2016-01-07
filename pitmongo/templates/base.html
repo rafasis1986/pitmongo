@@ -51,21 +51,12 @@
             </ul>
 
             <ul class="nav navbar-nav pull-xs-right">
-              {% if request.user.is_authenticated %}
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'users:detail' request.user.username  %}">{% trans "My Profile" %}</a>
+                  <a id="sign-up-link" class="nav-link" href="{% url 'people:add' %}">{% trans "Add Person" %}</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'account_logout' %}">{% trans "Logout" %}</a>
+                  <a id="log-in-link" class="nav-link" href="{% url 'people:list' %}">{% trans "People" %}</a>
                 </li>
-              {% else %}
-                <li class="nav-item">
-                  <a id="sign-up-link" class="nav-link" href="{% url 'people_add' %}">{% trans "Add Person" %}</a>
-                </li>
-                <li class="nav-item">
-                  <a id="log-in-link" class="nav-link" href="{% url 'people_list' %}">{% trans "People" %}</a>
-                </li>
-              {% endif %}
             </ul>
           </div>
         </div>
@@ -79,14 +70,6 @@
               <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}</div>
           {% endfor %}
       {% endif %}
-
-	{% block bread_crumb %}
-	<ul class="breadcrumb">
-	    <li><a href="/">Start</a><span class="divider"></span></li>
-	    {% block extra_bread %}
-	    {% endblock %}
-	</ul>
-	{% endblock bread_crumb %}
 	
       {% block content %}
         <p>Use this document as a way to quick start any new project.</p>
