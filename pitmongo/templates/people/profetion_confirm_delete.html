@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="panel panel-info">
+        <div class="panel-heading"><strong>Delete Profetion</strong></div>
+        <form method="post" action="{% url 'people:pro-delete' object.pk %}">
+        <div class="panel-body">
+            {% csrf_token %}
+            <p>Are you sure you want to delete {{ object.name }} ?</p>
+        </div>
+        
+        <div class="panel-footer">
+          <div class="controls">
+            <button type="submit" class="btn btn-warning ">Yes</button>
+            <a href="{% url 'people:pro-list' %}" class="btn btn-info"> 
+                <i class="glyphicon glyphicon-circle-arrow-left glyphicon glyphicon-white"></i> No 
+            </a>
+          </div>
+        </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

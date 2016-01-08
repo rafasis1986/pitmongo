@@ -6,31 +6,31 @@
     <div class="panel panel-info">
         <div class="panel-heading"><strong>
         {% if slug %}
-        Edit Person
+        Edit Profetion
         {% else %}
-        Add Person
+        Add Profetion
         {% endif %}    
         </strong>
         </div>
         
         {% if slug %}
-            <form method="post" enctype='multipart/form-data' action="{% url 'people:update' slug %}">
+            <form method="post" enctype='multipart/form-data' enctype='multipart/form-data' action="{% url 'people:pro-update' slug %}">
         {% else %}
-            <form method="post" enctype='multipart/form-data' action="{% url 'people:add' %}">
+            <form method="post" enctype='multipart/form-data' enctype='multipart/form-data' action="{% url 'people:pro-add' %}">
         {% endif %}
         <div class="panel-body">
-	    	<table class="table table-bordered">
-		        {% csrf_token %}
-		        {{ form|crispy }}
-	       </table>
-	    </div>
-	    
-	    <div class="panel-footer">
+            <table class="table table-bordered">
+                {% csrf_token %}
+                {{ form|crispy }}
+           </table>
+        </div>
+        
+        <div class="panel-footer">
           <div class="controls">
             <button type="submit" class="btn btn-success ">Save</button>
-            <a href="{% url 'people:list' %}" class="btn btn-warning"> 
+            <a href="{% url 'people:pro-list' %}" class="btn btn-warning"> 
                 <i class="glyphicon glyphicon-circle-arrow-left glyphicon glyphicon-white"></i> Cancel 
-			</a>
+            </a>
           </div>
         </div>
     </form>

@@ -1,30 +1,35 @@
 {% extends "base.html" %}
 {% load static %}
 
-
-
 {% block content %}
 <div class="container">
-
-	<div class="row">
-	  <div class="col-sm-12">
-	
-	    <h2>Person</h2>
-	    {% if object.name %}
-	      <p>{{ object.name }}</p>
-	      <br>
-	      <p>{{ object.surname }}</p>
-	    {% endif %}
-	  </div>
-	</div>
-	
-	<!-- Action buttons -->
-	<div class="row">
-	  <div class="col-sm-12 ">
-	    <a class="btn btn-primary" href="{% url 'people:update' object.pk %}">Update</a>
-	  </div>	
-	</div>
-
+    <div class="panel panel-info">
+        <div class="panel-heading"><strong>Person Detail</strong></div>
+        <div class="panel-body">
+			<div class="table-responsive">
+                <table class="table table-condensed">
+                    <tr>
+                        <th width="30%">Name</th>
+                        <td>{{ object.name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Surname</th>
+                        <td>{{ object.surname }}</td>
+                    </tr>
+                    <tr>
+                        <th>Profetion</th>
+                        <td>{{ object.profetion.name }}</td>
+                    </tr>
+			     </table>
+			</div>
+		</div>
+		<div class="panel-footer">
+		  <div class="controls">
+		    <a class="btn btn-primary" href="{% url 'people:update' object.pk %}">Update</a>
+		    <a class="btn btn-warning" href="{% url 'people:delete' object.pk %}">Delete</a>
+		  </div>
+		</div>
+    </div>
 </div>
 {% endblock content %}
 
