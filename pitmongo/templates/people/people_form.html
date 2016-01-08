@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-    {% if object %}
+	{{ slug }}
+    {% if slug %}
         <h2>Edit Person</h2>
-        <form method="post" enctype='multipart/form-data' enctype='multipart/form-data' action="{{ object.get_update_url  }}">
+        <form method="post" enctype='multipart/form-data' enctype='multipart/form-data' action="{% url 'people:update' slug %}">
 	{% else %}
         <h2>Add Person</h2>
         <form method="post" enctype='multipart/form-data' enctype='multipart/form-data' action="{% url 'people:add' %}">

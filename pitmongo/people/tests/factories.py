@@ -1,5 +1,5 @@
 import factory
-from ..models import User
+from pitmongo.people.modelos import User
 
 
 class UserFactory(factory.django.DjangoModelFactory):

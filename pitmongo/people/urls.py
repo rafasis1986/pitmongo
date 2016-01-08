@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from django.conf.urls import url
-from pitmongo.people.views import PeopleListView, PeopleDetailView, PeopleUpdateView, PeopleDeleteView,\
-    PeopleCreateView
+from pitmongo.people.views import PeopleListView, PeopleDetailView, PeopleUpdateView, PeopleCreateView
 
 app_name = 'people'
 urlpeople = [
@@ -14,5 +13,5 @@ urlpeople = [
     # URL pattern for the PeopleUpdateView
     url(regex=r'^~update/(?P<slug>[\w.@+-]+)/$', view=PeopleUpdateView.as_view(), name='update'),
     # URL pattern for the PeopleUpdateView
-    url(regex=r'^~delete/(?P<slug>[\w.@+-]+)/$', view=PeopleDeleteView.as_view(), name='delete'),
+    #url(regex=r'^~delete/(?P<slug>[\w.@+-]+)/$', view=PeopleDeleteView.as_view(), name='delete'),
 ]

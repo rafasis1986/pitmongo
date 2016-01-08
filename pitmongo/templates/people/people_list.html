@@ -9,9 +9,9 @@
     <h2>People</h2>
 
     <div class="list-group">
-        {% for person in people_list %}
-          <a href="{% url 'people:detail' person.slug %}" class="list-group-item">          	
-            <h4 class="list-group-item-heading">{{ person.full_name }}</h4>
+        {% for person in object_list %}
+          <a href="{% url 'people:detail' person.pk %}" class="list-group-item">          	
+            <h4 class="list-group-item-heading">{{ person.name }} {{ person.surname }} </h4>
           </a>
         {% endfor %}
 

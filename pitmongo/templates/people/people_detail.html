@@ -21,7 +21,7 @@
 	<!-- Action buttons -->
 	<div class="row">
 	  <div class="col-sm-12 ">
-	    <a class="btn btn-primary" href="{{ object.get_update_url }}">Update</a>
+	    <a class="btn btn-primary" href="{% url 'people:update' object.pk %}">Update</a>
 	  </div>	
 	</div>
 
