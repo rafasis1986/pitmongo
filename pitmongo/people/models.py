@@ -3,6 +3,6 @@
 from mongoengine import *
 
 
-class Person(Document):
+class People(Document):
     name = StringField(required=True)
     surname = StringField(required=True)

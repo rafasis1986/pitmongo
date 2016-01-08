@@ -6,7 +6,7 @@ from django.views.generic.edit import FormView
 from mongoengine.connection import connect
 
 from pitmongo.people.forms import PeopleForm
-from pitmongo.people.models import Person
+from pitmongo.people.models import People
 
 
 LIST_PEOPLE = 'people:list'
@@ -27,18 +27,19 @@ class PeopleDetailView(DetailView):
     template_name = PEOPLE_DETAIL
 
     def get_object(self, queryset=None):
-        return Person.objects.get(pk=self.kwargs['slug'])
+        return People.objects.get(pk=self.kwargs['slug'])
 
 
 class PeopleCreateView(FormView):
     form_class = PeopleForm
     template_name = PEOPLE_FORM
+    success_url = reverse_lazy(LIST_PEOPLE)
 
     def form_valid(self, form):
         name = form.cleaned_data['name']
         surname = form.cleaned_data['surname']
         print(name, surname)
-        person = Person(name=name, surname=surname)
+        person = People(name=name, surname=surname)
         person.save()
         return FormView.form_valid(self, form)
 
@@ -50,7 +51,7 @@ class PeopleUpdateView(FormView):
 
     def get_initial(self):
         initial = super(PeopleUpdateView, self).get_initial()
-        p = Person.objects.get(pk=self.kwargs['slug'])
+        p = People.objects.get(pk=self.kwargs['slug'])
         initial['name'] = p.name
         initial['surname'] = p.surname
         initial['slug'] = self.kwargs['slug']
@@ -67,7 +68,7 @@ class PeopleUpdateView(FormView):
         name = form.cleaned_data['name']
         surname = form.cleaned_data['surname']
         print(name, surname)
-        person = Person.objects.get(pk=self.kwargs['slug'])
+        person = People.objects.get(pk=self.kwargs['slug'])
         person.name = name
         person.surname = surname
         person.save()
@@ -78,4 +79,4 @@ class PeopleListView(ListView):
     template_name = PEOPLE_LIST
 
     def get_queryset(self):
-        return Person.objects()
+        return People.objects()
